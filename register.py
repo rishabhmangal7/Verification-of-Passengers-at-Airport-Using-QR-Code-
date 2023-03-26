@@ -2,7 +2,9 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.messagebox import *
 import pymysql
-
+import pyqrcode
+import png
+from PIL import Image
 
 def login_window():
     root.destroy()
@@ -64,7 +66,7 @@ root = Tk()
 root.geometry('1920x1080+0+10')
 root.title('Registration Form')
 
-bg = PhotoImage(file='loginbg.png')
+bg = PhotoImage(file='Images/loginbg.png')
 bgLabel = Label(root, image=bg)
 bgLabel.place(x=0, y=0)
 
@@ -130,12 +132,12 @@ checkButton = Checkbutton(registerFrame, text='I Agree All The Terms & Condition
                           offvalue=0, font=('times new roman', 14, 'bold'), bg='white')
 checkButton.place(x=20, y=530)
 
-button = PhotoImage(file='button.png')
+button = PhotoImage(file='Images/button.png')
 registerbutton = Button(registerFrame, image=button, bd=0, cursor='hand2', bg='white', activebackground='white'
                         , activeforeground='white', command=register)
 registerbutton.place(x=250, y=580)
 
-loginimage = PhotoImage(file='login.png')
+loginimage = PhotoImage(file='Images/login.png')
 loginbutton1 = Button(root, image=loginimage, bd=0, cursor='hand2', bg='gold', activebackground='gold',
                       activeforeground='gold', command=login_window)
 loginbutton1.place(x=240, y=330)
