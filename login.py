@@ -67,7 +67,7 @@ def forgot_password():
                                         bg='white')
                 forgotpassLabel.place(x=225, y=10)
 
-                passwordimage = PhotoImage(file='Images/password.png')
+                passwordimage = PhotoImage(file='resource/Images/password.png')
                 forgotimageLabel = Label(root2, image=passwordimage, bg='white')
                 forgotimageLabel.place(x=170, y=70)
 
@@ -168,14 +168,14 @@ def signin():
 root = Tk()
 root.geometry('1920x1080+50+50')
 root.title('Login Page')
-bglogin = ImageTk.PhotoImage(Image.open("Images/he.png"))
+bglogin = ImageTk.PhotoImage(Image.open("resource/Images/he.png"))
 bgloginLabel = Label(root, image=bglogin)
 bgloginLabel.place(x=0, y=0)
 
 frame = Frame(root, width=660, height=320)
 frame.place(x=500, y=200)
 
-userimage = PhotoImage(file='Images/user.png')
+userimage = PhotoImage(file='resource/Images/user.png')
 userimageLabel = Label(frame, image=userimage)
 userimageLabel.place(x=10, y=50)
 mailLabel = Label(frame, text='Email', font=('arial', 22, 'bold'), fg='black')
