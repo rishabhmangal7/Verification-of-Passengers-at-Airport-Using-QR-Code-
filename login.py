@@ -113,6 +113,21 @@ def register_window():
     root.destroy()
     import register
 
+def chat_window():
+    root.destroy()
+    import chatbot
+
+def Option_window():
+    root.destroy()
+    import Option
+
+def face_window():
+    root.destroy()
+    import main_video
+
+def scan_window():
+    root.destroy()
+    import ScanQR
 
 def signin():
     if mailentry.get() == '' or passentry.get() == '':
@@ -126,39 +141,26 @@ def signin():
             row = cur.fetchone()
             if row is None:
                 showerror('error', 'Invalid Email or Password')
-
-
             else:
-                cap = cv2.VideoCapture(0)
-                cap.set(3, 640)
-                cap.set(4, 480)
+                root
+                root.geometry('1920x1080+0+10')
+                root.title('Option Window')
 
-                with open('myDataFile.txt') as f:
-                    myDataList = f.read().splitlines()
+                bg = PhotoImage(file='resource/Images/loginbg.png')
+                bgLabel = Label(root, image=bg)
+                bgLabel.place(x=0, y=0)
 
-                while True:
+                ScanImage = PhotoImage(file='resource/Images/Scan.png')
+                scanButton = Button(root, image=ScanImage, bd=0, cursor='hand2', bg='gold', activebackground='gold',
+                                    activeforeground='gold', command=scan_window)
+                scanButton.place(x=200, y=180)
 
-                    success, img = cap.read()
-                    for barcode in decode(img):
-                        myData = barcode.data.decode('utf-8')
-                        flag = False
-                        if myData in myDataList:
-                            print('Access Granted')
-                            myColor = (0, 255, 0)
-                            flag = True
-                        else:
-                            print('Access Denied')
-                            myColor = (0, 0, 255)
+                FaceImage = PhotoImage(file='resource/Images/face.png')
+                faceButton = Button(root, image=FaceImage, bd=0, cursor='hand2', bg='gold', activebackground='gold',
+                                    activeforeground='gold', command=face_window)
+                faceButton.place(x=850, y=220)
 
-                        pts = np.array([barcode.polygon], np.int32)
-                        pts = pts.reshape(-1, 1, 2)
-                        cv2.polylines(img, [pts], True, (0, 255, 0) if flag else (0, 0, 255), 5)
-                        pts2 = barcode.rect
-                        cv2.putText(img, "Access Granted" if flag else "Access denied", (pts2[0], pts2[1]),
-                                    cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0) if flag else (0, 0, 255), 2)
-
-                    cv2.imshow('Scan your QR Code here', img)
-                    cv2.waitKey(1)
+                root.mainloop()
 
             con.close()
         except Exception as e:
@@ -166,7 +168,7 @@ def signin():
 
 
 root = Tk()
-root.geometry('1920x1080+50+50')
+root.geometry('1920x1080+0+10')
 root.title('Login Page')
 bglogin = ImageTk.PhotoImage(Image.open("resource/Images/he.png"))
 bgloginLabel = Label(root, image=bglogin)
@@ -200,5 +202,10 @@ forgotbutton.place(x=410, y=200)
 loginbutton2 = Button(frame, text='Login', font=('arial', 18, 'bold'), fg='white', bg='gray20', cursor='hand2',
                       activebackground='gray20', activeforeground='white', command=signin)
 loginbutton2.place(x=450, y=240)
+
+HelpButton = Button(frame, text='Need Help?', font=('arial', 12,), bd=0, fg='gray20',
+                   cursor='hand2', command=chat_window,
+                   activebackground='white', activeforeground='gray20')
+HelpButton.place(x=250, y=250)
 
 root.mainloop()

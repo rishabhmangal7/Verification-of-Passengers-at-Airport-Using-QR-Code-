@@ -1,0 +1,38 @@
+[
+  {
+    "response_type": "greeting",
+    "user_input": ["hello", "hi", "hey"],
+    "bot_response": "Hello, welcome to the airport",
+    "required_words": []
+  },
+  {
+    "response_type": "greeting",
+    "user_input": ["see you", "goodbye", "bye"],
+    "bot_response": "See you later!",
+    "required_words": ["see","bye", "goodbye"]
+  },
+  {
+    "response_type": "greeting",
+    "user_input": ["nice", "to", "meet", "you"],
+    "bot_response": "The pleasure is all mine!",
+    "required_words": ["nice", "meet", "you"]
+  },
+  {
+    "response_type": "question",
+    "user_input": ["how", "to", "scan", "QR", "code", "qr", "my", "ticket"],
+    "bot_response": "First, login with your valid email ID and password. Then click on the 'Scan my QR code' button and hold the QR code in front of the camera",
+    "required_words": ["QR", "code", "Scan"]
+  },
+  {
+    "response_type": "question",
+    "user_input": ["how", "to", "detect", "face", "login", "verify", "identity"],
+    "bot_response": "First, login with your valid email ID and password. Then click on the 'Face Recognition' button and stand in front of the camera",
+    "required_words": ["detect", "face", "login", "verify", "identify"]
+  },
+  {
+    "response_type": "question",
+    "user_input": ["how", "are", "you"],
+    "bot_response": "I'm great! Thanks for asking.",
+    "required_words": ["how", "are", "you"]
+  }
+]
